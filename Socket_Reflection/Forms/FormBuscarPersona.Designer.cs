@@ -31,7 +31,7 @@
             label2 = new Label();
             label1 = new Label();
             Txtcedula = new TextBox();
-            Buscar = new Button();
+            Aceptar = new Button();
             SuspendLayout();
             // 
             // label2
@@ -68,21 +68,20 @@
             Txtcedula.TabIndex = 16;
             Txtcedula.Text = "Ingrese cédula";
             // 
-            // Buscar
+            // Aceptar
             // 
-            Buscar.BackColor = Color.FromArgb(13, 13, 13);
-            Buscar.Cursor = Cursors.Hand;
-            Buscar.FlatAppearance.BorderColor = Color.White;
-            Buscar.FlatAppearance.MouseOverBackColor = Color.MediumPurple;
-            Buscar.FlatStyle = FlatStyle.Flat;
-            Buscar.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Buscar.ForeColor = Color.White;
-            Buscar.Location = new Point(152, 245);
-            Buscar.Name = "Buscar";
-            Buscar.Size = new Size(167, 51);
-            Buscar.TabIndex = 15;
-            Buscar.Text = "Buscar";
-            Buscar.UseVisualStyleBackColor = false;
+            Aceptar.BackColor = Color.FromArgb(13, 13, 13);
+            Aceptar.Cursor = Cursors.Hand;
+            Aceptar.FlatAppearance.BorderColor = Color.White;
+            Aceptar.FlatAppearance.MouseOverBackColor = Color.MediumPurple;
+            Aceptar.FlatStyle = FlatStyle.Flat;
+            Aceptar.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Aceptar.ForeColor = Color.White;
+            Aceptar.Location = new Point(152, 245);
+            Aceptar.Name = "Aceptar";
+            Aceptar.Size = new Size(167, 51);
+            Aceptar.TabIndex = 15;
+            Aceptar.UseVisualStyleBackColor = false;
             // 
             // FormBuscarPersona
             // 
@@ -93,10 +92,10 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(Txtcedula);
-            Controls.Add(Buscar);
+            Controls.Add(Aceptar);
             Name = "FormBuscarPersona";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Buscar por Persona";
+            Text = "Persona";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -106,6 +105,6 @@
         private Label label2;
         private Label label1;
         private TextBox Txtcedula;
-        private Button Buscar;
+        private Button Aceptar;
     }
 }

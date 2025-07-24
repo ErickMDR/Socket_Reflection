@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             CargarLibreria = new Button();
             Title = new Label();
-            Enviar = new Button();
             PanelCliente = new Panel();
             CrearSocketCli = new Button();
             AccionesCliente = new Panel();
@@ -59,15 +58,19 @@
             TxtClase = new TextBox();
             panel4 = new Panel();
             label = new Label();
-            TxtEstado = new TextBox();
+            TxtEstadoServidor = new TextBox();
             label4 = new Label();
             IniciarServer = new Button();
+            panel3 = new Panel();
+            label10 = new Label();
+            TxtEstadoCliente = new TextBox();
             PanelCliente.SuspendLayout();
             AccionesCliente.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTabla).BeginInit();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // CargarLibreria
@@ -96,29 +99,13 @@
             Title.TabIndex = 1;
             Title.Text = "Socket con Reflexión";
             // 
-            // Enviar
-            // 
-            Enviar.BackColor = Color.FromArgb(13, 13, 13);
-            Enviar.Cursor = Cursors.Hand;
-            Enviar.FlatAppearance.BorderColor = Color.White;
-            Enviar.FlatAppearance.MouseOverBackColor = Color.MediumPurple;
-            Enviar.FlatStyle = FlatStyle.Flat;
-            Enviar.Font = new Font("Microsoft Sans Serif", 13.1478262F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Enviar.Location = new Point(128, 344);
-            Enviar.Name = "Enviar";
-            Enviar.Size = new Size(197, 50);
-            Enviar.TabIndex = 2;
-            Enviar.Text = "Enviar Petición";
-            Enviar.UseVisualStyleBackColor = false;
-            Enviar.Click += Enviar_Click;
-            // 
             // PanelCliente
             // 
             PanelCliente.BorderStyle = BorderStyle.FixedSingle;
+            PanelCliente.Controls.Add(panel3);
             PanelCliente.Controls.Add(CrearSocketCli);
             PanelCliente.Controls.Add(AccionesCliente);
             PanelCliente.Controls.Add(label1);
-            PanelCliente.Controls.Add(Enviar);
             PanelCliente.Controls.Add(CargarLibreria);
             PanelCliente.Location = new Point(17, 85);
             PanelCliente.Name = "PanelCliente";
@@ -148,7 +135,7 @@
             AccionesCliente.Controls.Add(Eliminar);
             AccionesCliente.Controls.Add(Buscar);
             AccionesCliente.Controls.Add(Ingresar);
-            AccionesCliente.Location = new Point(20, 156);
+            AccionesCliente.Location = new Point(20, 267);
             AccionesCliente.Name = "AccionesCliente";
             AccionesCliente.Size = new Size(413, 170);
             AccionesCliente.TabIndex = 4;
@@ -236,9 +223,9 @@
             // 
             panel1.Controls.Add(label2);
             panel1.Controls.Add(dataGridViewTabla);
-            panel1.Location = new Point(21, 494);
+            panel1.Location = new Point(21, 537);
             panel1.Name = "panel1";
-            panel1.Size = new Size(452, 237);
+            panel1.Size = new Size(452, 194);
             panel1.TabIndex = 4;
             // 
             // label2
@@ -246,7 +233,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 16.2782612F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.Control;
-            label2.Location = new Point(179, 9);
+            label2.Location = new Point(179, 6);
             label2.Name = "label2";
             label2.Size = new Size(95, 36);
             label2.TabIndex = 4;
@@ -261,42 +248,42 @@
             dataGridViewTabla.BackgroundColor = Color.FromArgb(13, 13, 13);
             dataGridViewTabla.BorderStyle = BorderStyle.None;
             dataGridViewTabla.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(22, 18, 30);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.Padding = new Padding(30, 5, 5, 5);
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(22, 18, 30);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewTabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(22, 18, 30);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.Padding = new Padding(30, 5, 5, 5);
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(22, 18, 30);
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridViewTabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewTabla.ColumnHeadersHeight = 50;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(22, 18, 30);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 14F);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.Padding = new Padding(5);
-            dataGridViewCellStyle2.SelectionBackColor = Color.MediumPurple;
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridViewTabla.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(22, 18, 30);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 14F);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.Padding = new Padding(5);
+            dataGridViewCellStyle5.SelectionBackColor = Color.MediumPurple;
+            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dataGridViewTabla.DefaultCellStyle = dataGridViewCellStyle5;
             dataGridViewTabla.EnableHeadersVisualStyles = false;
             dataGridViewTabla.GridColor = Color.LightGray;
-            dataGridViewTabla.Location = new Point(0, 55);
+            dataGridViewTabla.Location = new Point(0, 50);
             dataGridViewTabla.Margin = new Padding(0);
             dataGridViewTabla.Name = "dataGridViewTabla";
             dataGridViewTabla.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(22, 18, 30);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 8.765218F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(22, 18, 30);
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridViewTabla.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(22, 18, 30);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 8.765218F);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(22, 18, 30);
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridViewTabla.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dataGridViewTabla.RowHeadersWidth = 49;
             dataGridViewTabla.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewTabla.Size = new Size(452, 182);
+            dataGridViewTabla.Size = new Size(452, 147);
             dataGridViewTabla.TabIndex = 4;
             // 
             // panel2
@@ -445,7 +432,7 @@
             // 
             panel4.BorderStyle = BorderStyle.FixedSingle;
             panel4.Controls.Add(label);
-            panel4.Controls.Add(TxtEstado);
+            panel4.Controls.Add(TxtEstadoServidor);
             panel4.Location = new Point(-1, 156);
             panel4.Name = "panel4";
             panel4.Size = new Size(460, 97);
@@ -462,18 +449,18 @@
             label.TabIndex = 10;
             label.Text = "Estado:";
             // 
-            // TxtEstado
+            // TxtEstadoServidor
             // 
-            TxtEstado.BackColor = Color.FromArgb(13, 13, 13);
-            TxtEstado.Enabled = false;
-            TxtEstado.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtEstado.ForeColor = Color.White;
-            TxtEstado.Location = new Point(134, 32);
-            TxtEstado.MaxLength = 40;
-            TxtEstado.Name = "TxtEstado";
-            TxtEstado.ReadOnly = true;
-            TxtEstado.Size = new Size(264, 37);
-            TxtEstado.TabIndex = 9;
+            TxtEstadoServidor.BackColor = Color.FromArgb(13, 13, 13);
+            TxtEstadoServidor.Enabled = false;
+            TxtEstadoServidor.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtEstadoServidor.ForeColor = Color.White;
+            TxtEstadoServidor.Location = new Point(134, 32);
+            TxtEstadoServidor.MaxLength = 40;
+            TxtEstadoServidor.Name = "TxtEstadoServidor";
+            TxtEstadoServidor.ReadOnly = true;
+            TxtEstadoServidor.Size = new Size(264, 37);
+            TxtEstadoServidor.TabIndex = 9;
             // 
             // label4
             // 
@@ -500,6 +487,40 @@
             IniciarServer.Text = "Iniciar Servidor";
             IniciarServer.UseVisualStyleBackColor = false;
             // 
+            // panel3
+            // 
+            panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(label10);
+            panel3.Controls.Add(TxtEstadoCliente);
+            panel3.Location = new Point(-1, 156);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(460, 97);
+            panel3.TabIndex = 11;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.ForeColor = Color.White;
+            label10.Location = new Point(36, 35);
+            label10.Name = "label10";
+            label10.Size = new Size(82, 30);
+            label10.TabIndex = 10;
+            label10.Text = "Estado:";
+            // 
+            // TxtEstadoCliente
+            // 
+            TxtEstadoCliente.BackColor = Color.FromArgb(13, 13, 13);
+            TxtEstadoCliente.Enabled = false;
+            TxtEstadoCliente.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtEstadoCliente.ForeColor = Color.White;
+            TxtEstadoCliente.Location = new Point(134, 32);
+            TxtEstadoCliente.MaxLength = 40;
+            TxtEstadoCliente.Name = "TxtEstadoCliente";
+            TxtEstadoCliente.ReadOnly = true;
+            TxtEstadoCliente.Size = new Size(264, 37);
+            TxtEstadoCliente.TabIndex = 9;
+            // 
             // Menu
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
@@ -525,6 +546,8 @@
             panel2.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -533,7 +556,6 @@
 
         private Button CargarLibreria;
         private Label Title;
-        private Button Enviar;
         private Panel PanelCliente;
         private Label label1;
         private Panel AccionesCliente;
@@ -545,13 +567,12 @@
         private Button CrearSocketCli;
         private Panel panel1;
         private Panel panel2;
-        private Panel panel3;
         private Panel panel4;
         private Label label4;
         private Button button6;
         private Button IniciarServer;
         private Label label;
-        private TextBox TxtEstado;
+        private TextBox TxtEstadoServidor;
         private Button ApagarServer;
         private Label label5;
         private Label label3;
@@ -564,5 +585,8 @@
         private TextBox TxtTipos;
         private ComboBox cmbTabla;
         private Label label9;
+        private Panel panel3;
+        private Label label10;
+        private TextBox TxtEstadoCliente;
     }
 }
