@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Socket_Reflection
+namespace Socket_Reflection.Forms
 {
-    public partial class Accion : Form
+    public partial class FormPersona : Form
     {
-        public Accion()
+        public FormPersona()
         {
             InitializeComponent();
         }

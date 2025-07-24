@@ -5,14 +5,14 @@ using System;
 using System.Data;
 using System.IO;
 
-namespace Sistema_Academia.Datos
+namespace Socket_Reflection.Datos
 {
-    public abstract class TablaBase<T> : IDisposable
+    public abstract class AccionesSeccion<T> : IDisposable
     {
         private readonly Conexion _conexionFactory;
         protected abstract string NombreTabla { get; }
 
-        public TablaBase()
+        public AccionesSeccion()
         {
             _conexionFactory = new Conexion();
         }

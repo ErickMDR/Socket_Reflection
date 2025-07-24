@@ -22,7 +22,7 @@ namespace Socket_Reflection.Server_Client
             {
                 try
                 {
-                    srv = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                    srv = new Socket();
                     srv.Bind(new IPEndPoint(IPAddress.Any, port));
                     srv.Listen(10);
                     return true;

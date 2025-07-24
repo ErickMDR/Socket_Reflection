@@ -42,13 +42,13 @@ namespace Socket_Reflection
         }
         private void CargarLibreria_Click(object sender, EventArgs e)
         {
-            using var form = new Accion();
+            using var form = new FormMateria();
             //if (form.ShowDialog() == DialogResult.OK && form.MateriaAgregada)
                 //CargarDatosMaterias();
         }
         private void Enviar_Click(object sender, EventArgs e)
         {
-            using var form = new Accion();
+            using var form = new FormMateria();
             //if (form.ShowDialog() == DialogResult.OK && form.MateriaAgregada)
                 //CargarDatosMaterias();
         }

@@ -1,17 +1,19 @@
 {
+  "Persona": {
+    "BuscarCi":"SELECT DISTINCT p.persona_id, p.persona_ci, p.persona_no, p.persona_ap, tp.tipo_persona_de FROM persona p JOIN tipo_persona tp ON p.tipo_persona_id = tp.tipo_persona_id LEFT JOIN curso c ON p.persona_id = c.persona_id LEFT JOIN materia m ON c.materia_id = m.materia_id LEFT JOIN seccion s ON c.seccion_id = s.seccion_id WHERE 1=1 {0} ORDER BY p.persona_ci;",
+    "Crear": "INSERT INTO persona (persona_no, persona_ap, persona_ci, tipo_persona_id) VALUES (@nombre, @apellido, @ci, @tipoPersona);",
+    "Leer": "SELECT p.persona_id, p.persona_ci, p.persona_no, p.persona_ap, tp.tipo_persona_de FROM persona p JOIN tipo_persona tp ON p.tipo_persona_id = tp.tipo_persona_id ORDER BY p.persona_ci;"
+    },
+
   "Materia": {
     "Buscar": "SELECT * FROM materia WHERE materia_de ILIKE @descripcion;",
     "Crear": "INSERT INTO materia (materia_de) VALUES (@descripcion);",
-    "Leer": "SELECT * FROM materia ORDER BY materia_id;",
-    "Eliminar": "DELETE FROM materia WHERE materia_id = @materiaId;",
+    "Leer": "SELECT * FROM materia ORDER BY materia_id;"
   },
 
   "Seccion": {
     "Buscar": "SELECT * FROM seccion WHERE seccion_de ILIKE @descripcion;",
     "Crear": "INSERT INTO seccion (seccion_de) VALUES (@descripcion);",
-    "Leer": "SELECT * FROM seccion ORDER BY seccion_id;",
-    "Eliminar": "DELETE FROM seccion WHERE seccion_id = @seccionId;",
-    "Actualizar": "UPDATE seccion SET seccion_de = @descripcion WHERE seccion_id = @seccionId;",
-    "ObtenerSeccionesPorMateria": "SELECT DISTINCT s.seccion_id, s.seccion_de FROM seccion s JOIN curso c ON s.seccion_id = c.seccion_id WHERE c.materia_id = @materiaId"
+    "Leer": "SELECT * FROM seccion ORDER BY seccion_id;"
   }
 }
