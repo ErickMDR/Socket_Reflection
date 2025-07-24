@@ -1,56 +1,55 @@
-﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 using Npgsql;
-using Socket_Reflection.Datos;
+using Socket_Reflection.Entidades;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
 
 namespace Socket_Reflection.Datos
 {
-    public abstract class AccionesSeccion<T> : IDisposable
+    public class AccionesSeccion : TablaBase<AccionesSeccion>
     {
-        private readonly Conexion _conexionFactory;
-        protected abstract string NombreTabla { get; }
+        protected override string NombreTabla => "Seccion";
+        private readonly IConfigurationRoot _config;
 
-        public AccionesSeccion()
+        public AccionesSeccion() : base()
         {
-            _conexionFactory = new Conexion();
+            _config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("queries.json")
+                .Build();
         }
 
-        public DataTable Listado()
+        public void Insertar(Seccion seccion)
         {
-            var dt = new DataTable();
+            var query = _config["Seccion:Crear"];
+            using var m = new ManejadorConexion(new Conexion());
+            using var cmd = new NpgsqlCommand(query, m.ConexionAbierta);
+            cmd.Parameters.AddWithValue("@descripcion", seccion.Descripcion);
+            cmd.ExecuteNonQuery();
+        }
 
-            try
+        public List<Seccion> BuscarPorDescripcion(string descripcionSeccion)
+        {
+            var secciones = new List<Seccion>();
+            var query = _config["Seccion:Buscar"];
+
+            using var m = new ManejadorConexion(new Conexion());
+            using var cmd = new NpgsqlCommand(query, m.ConexionAbierta);
+            cmd.Parameters.AddWithValue("@descripcion", $"%{descripcionSeccion}%");
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
             {
-                var config = new ConfigurationBuilder()
-                    .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile("queries.json")
-                    .Build();
-
-                var query = config[$"{NombreTabla}:Leer"];
-
-                if (string.IsNullOrEmpty(query))
-                    throw new InvalidOperationException("Query no encontrado");
-
-                using (var manejador = new ManejadorConexion(_conexionFactory))
-                using (var cmd = new NpgsqlCommand(query, manejador.ConexionAbierta))
-                using (var reader = cmd.ExecuteReader())
+                secciones.Add(new Seccion
                 {
-                    dt.Load(reader);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener listado", ex);
+                    Id = reader.GetInt32(reader.GetOrdinal("seccion_id")),
+                    Descripcion = reader.GetString(reader.GetOrdinal("seccion_de"))
+                });
             }
 
-            return dt;
-        }
-
-        public void Dispose()
-        {
-            _conexionFactory?.Dispose();
+            return secciones;
         }
     }
 }

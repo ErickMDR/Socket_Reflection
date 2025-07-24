@@ -12,7 +12,7 @@ using Socket_Reflection.Datos;
 
 namespace Socket_Reflection.Clases
 {
-    public class AccionesMateria
+    public class AccionesMateria : TablaBase<AccionesMateria>
     {
         private readonly IConfigurationRoot _config;
         public AccionesMateria() : base()
@@ -28,23 +28,6 @@ namespace Socket_Reflection.Clases
             using var m = new ManejadorConexion(new Conexion());
             using var cmd = new NpgsqlCommand(query, m.ConexionAbierta);
             cmd.Parameters.AddWithValue("@descripcion", materia.Nombre);
-            cmd.ExecuteNonQuery();
-        }
-        public void Actualizar(Entidades.Materia materia)
-        {
-            var query = _config["Materia:Actualizar"];
-            using var m = new ManejadorConexion(new Conexion());
-            using var cmd = new NpgsqlCommand(query, m.ConexionAbierta);
-            cmd.Parameters.AddWithValue("@descripcion", materia.Nombre);
-            cmd.Parameters.AddWithValue("@materiaId", materia.Id);
-            cmd.ExecuteNonQuery();
-        }
-        public void Eliminar(int id)
-        {
-            var query = _config["Materia:Eliminar"];
-            using var m = new ManejadorConexion(new Conexion());
-            using var cmd = new NpgsqlCommand(query, m.ConexionAbierta);
-            cmd.Parameters.AddWithValue("@materiaId", id);
             cmd.ExecuteNonQuery();
         }
         public List<Entidades.Materia> BuscarPorNombre(string nombreMateria)

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Socket_Reflection.Datos
+namespace Socket_Reflection.Entidades
 {
     public class Persona
     {

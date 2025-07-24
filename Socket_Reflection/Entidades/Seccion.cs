@@ -1,4 +1,4 @@
-namespace Socket_Reflection.Datos
+namespace Socket_Reflection.Entidades
 {
     public class Seccion
     {
