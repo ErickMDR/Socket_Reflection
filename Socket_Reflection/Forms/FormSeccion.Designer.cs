@@ -1,6 +1,6 @@
 ﻿namespace Socket_Reflection
 {
-    partial class Seccion
+    partial class FormSeccion
     {
         /// <summary>
         /// Required designer variable.

@@ -21,12 +21,21 @@ namespace Socket_Reflection.Datos
                 .Build();
         }
 
-        public void Insertar(Seccion seccion)
+        public void Insertar(Entidades.Seccion seccion)
         {
             var query = _config["Seccion:Crear"];
             using var m = new ManejadorConexion(new Conexion());
             using var cmd = new NpgsqlCommand(query, m.ConexionAbierta);
             cmd.Parameters.AddWithValue("@descripcion", seccion.Descripcion);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void Eliminar(int id)
+        {
+            var query = _config["Seccion:Eliminar"];
+            using var m = new ManejadorConexion(new Conexion());
+            using var cmd = new NpgsqlCommand(query, m.ConexionAbierta);
+            cmd.Parameters.AddWithValue("@seccionId", id);
             cmd.ExecuteNonQuery();
         }
 

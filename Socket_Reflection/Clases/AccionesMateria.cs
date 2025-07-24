@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Npgsql;
-using Sistema_Academia.Datos;
+using Socket_Reflection.Datos;
 using Socket_Reflection.Entidades;
 using System;
 using System.Collections.Generic;
@@ -8,12 +8,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Socket_Reflection.Datos;
 
 namespace Socket_Reflection.Clases
 {
     public class AccionesMateria : TablaBase<AccionesMateria>
     {
+        protected override string NombreTabla => "Materia";
         private readonly IConfigurationRoot _config;
         public AccionesMateria() : base()
         {
@@ -28,6 +28,14 @@ namespace Socket_Reflection.Clases
             using var m = new ManejadorConexion(new Conexion());
             using var cmd = new NpgsqlCommand(query, m.ConexionAbierta);
             cmd.Parameters.AddWithValue("@descripcion", materia.Nombre);
+            cmd.ExecuteNonQuery();
+        }
+        public void Eliminar(int id)
+        {
+            var query = _config["Materia:Eliminar"];
+            using var m = new ManejadorConexion(new Conexion());
+            using var cmd = new NpgsqlCommand(query, m.ConexionAbierta);
+            cmd.Parameters.AddWithValue("@materiaId", id);
             cmd.ExecuteNonQuery();
         }
         public List<Entidades.Materia> BuscarPorNombre(string nombreMateria)

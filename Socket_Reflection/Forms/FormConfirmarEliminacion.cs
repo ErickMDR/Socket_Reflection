@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Socket_Reflection
+namespace Socket_Reflection.Forms
 {
-    public partial class FormSeccion : Form
+    public partial class FormConfirmarEliminacion : Form
     {
-        public FormSeccion()
+        public FormConfirmarEliminacion()
         {
             InitializeComponent();
         }

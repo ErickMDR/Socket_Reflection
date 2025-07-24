@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 
-namespace Socket_Reflection.Server_Client
+namespace Socket_Reflection.WebSocket
 {
 
     public class Server
@@ -22,7 +21,7 @@ namespace Socket_Reflection.Server_Client
             {
                 try
                 {
-                    srv = new Socket();
+                   // srv = new Socket();
                     srv.Bind(new IPEndPoint(IPAddress.Any, port));
                     srv.Listen(10);
                     return true;
@@ -78,10 +77,10 @@ namespace Socket_Reflection.Server_Client
                 }
             }
 
-            public static void Main(string[] args)
+          /*  public static void Main(string[] args)
             {
                 Server s = new Server();
                 s.ListenerSocket();
-            }
+            }*/
         }
 }

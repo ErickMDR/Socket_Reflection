@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using Socket_Reflection.Entidades;
+using Socket_Reflection.Datos;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -32,6 +33,16 @@ namespace Socket_Reflection.Clases
             cmd.Parameters.AddWithValue("@ci", p.Cedula);
             cmd.Parameters.AddWithValue("@tipoPersona", ConvertirTipoPersonaANumero(p.TipoPersona));
             return cmd.ExecuteNonQuery();
+        }
+
+        public void Eliminar(string nombre, string apellido)
+        {
+            var q = _config["Persona:Eliminar"];
+            using var m = new ManejadorConexion(new Conexion());
+            using var cmd = new NpgsqlCommand(q, m.ConexionAbierta);
+            cmd.Parameters.AddWithValue("@nombre", nombre);
+            cmd.Parameters.AddWithValue("@apellido", apellido);
+            cmd.ExecuteNonQuery();
         }
 
         public Persona BuscarPorCedula(int ci)

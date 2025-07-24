@@ -1,8 +1,8 @@
 namespace Socket_Reflection
 {
-    public partial class Socket : Form
+    public partial class Menu : Form
     {
-        public Socket()
+        public Menu()
         {
             InitializeComponent();
         }
