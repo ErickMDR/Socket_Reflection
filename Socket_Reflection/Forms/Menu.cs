@@ -24,7 +24,7 @@ namespace Socket_Reflection
             }
         }*/
 
-        private void AgregarHeaders()
+        private void AgregarHeadersMateria()
         {
             try
             {
@@ -40,17 +40,71 @@ namespace Socket_Reflection
                     MessageBoxIcon.Error);
             }
         }
+        private void AgregarHeadersPersona()
+        {
+            try
+            {
+                dataGridViewTabla.Columns["persona_id"].Visible = false;
+                dataGridViewTabla.Columns[1].HeaderText = "Cédula";
+                dataGridViewTabla.Columns[2].HeaderText = "Nombre";
+                dataGridViewTabla.Columns[3].HeaderText = "Apellido";
+                dataGridViewTabla.Columns[4].HeaderText = "Tipo de Persona";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar nombres de columna: {ex.Message}", "Error",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void AgregarHeadersSeccion()
+        {
+            try
+            {
+                dataGridViewTabla.Columns["seccion_id"].HeaderText = "ID";
+                dataGridViewTabla.Columns["seccion_de"].HeaderText = "Sección";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar nombres de columna: {ex.Message}",
+                              "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void CargarLibreria_Click(object sender, EventArgs e)
         {
-            using var form = new FormMateria();
-            //if (form.ShowDialog() == DialogResult.OK && form.MateriaAgregada)
-                //CargarDatosMaterias();
+            
         }
-        private void Enviar_Click(object sender, EventArgs e)
+
+        private void CrearSocketCli_Click(object sender, EventArgs e)
         {
-            using var form = new FormMateria();
+
+        }
+
+        private void Buscar_Click(object sender, EventArgs e)
+        {
+            //using var form = new FormMateria();
             //if (form.ShowDialog() == DialogResult.OK && form.MateriaAgregada)
-                //CargarDatosMaterias();
+            //CargarDatosMaterias();
+        }
+
+        private void Ingresar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Eliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IniciarServer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ApagarServer_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
