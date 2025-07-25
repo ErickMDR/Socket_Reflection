@@ -18,19 +18,21 @@ namespace Socket_Reflection
             InitializeComponent();
             _servidor = new Server();
 
-            _servidor.EstadoServidorCambiado += Servidor_EstadoCambiado;
+            _servidor.ResultadoRecibido += Servidor_ResultadoRecibido;
         }
 
         #region Métodos auxiliares
-        private void Servidor_EstadoCambiado(bool servidorActivo)
+
+        private void Servidor_ResultadoRecibido(Resultado resultado)
         {
             if (InvokeRequired)
             {
-                Invoke(new Action<bool>(Servidor_EstadoCambiado), servidorActivo);
+                Invoke(new Action<Resultado>(Servidor_ResultadoRecibido), resultado);
                 return;
             }
-        }
 
+            ProcesarResultado(resultado); 
+        }
         private void ActualizarEstadoServidor(string mensaje)
         {
             TxtEstadoServidor.Text = mensaje;

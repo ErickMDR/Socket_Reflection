@@ -12,18 +12,15 @@ namespace Socket_Reflection.WebSocket
 {
     public class Server
     {
-        public event Action<bool> EstadoServidorCambiado;
-
+        public event Action<Resultado> ResultadoRecibido;
         private TcpListener _servidor;
         private bool _encendido;
         private Thread _hiloServidor;
-
         public void Iniciar(int puerto = 1024)
         {
             _servidor = new TcpListener(IPAddress.Any, puerto);
             _servidor.Start();
             _encendido = true;
-            EstadoServidorCambiado?.Invoke(true);
 
             _hiloServidor = new Thread(() =>
             {
@@ -54,8 +51,6 @@ namespace Socket_Reflection.WebSocket
             _encendido = false;
             _servidor?.Stop();
             _hiloServidor?.Join(500);
-
-            EstadoServidorCambiado?.Invoke(false);
         }
 
         private void ProcesarCliente(TcpClient cliente)
@@ -71,6 +66,8 @@ namespace Socket_Reflection.WebSocket
 
                     var solicitud = JsonConvert.DeserializeObject<Solicitud>(solicitudJson);
                     var resultado = EjecutarAccion(solicitud);
+
+                    ResultadoRecibido?.Invoke(resultado);
 
                     // Enviar respuesta
                     var respuestaJson = JsonConvert.SerializeObject(resultado);
