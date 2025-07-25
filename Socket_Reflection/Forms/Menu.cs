@@ -242,7 +242,7 @@ namespace Socket_Reflection
         }
         #endregion
 
-        #region Métodos auxiliares
+        #region Métodos de Resultados
         private void ProcesarResultadoBusqueda(Resultado resultado)
         {
             if (!resultado.Exitoso)
