@@ -21,8 +21,8 @@ namespace Socket_Reflection.WebSocket
         public Client()
         {
             // Valores por defecto
-            _servidor = "localhost";
-            _puerto = 1024;
+            _servidor = null;
+            _puerto = 0;
         }
 
         /// <summary>
