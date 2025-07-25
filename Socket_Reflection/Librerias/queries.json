@@ -1,9 +1,9 @@
 {
   "Persona": {
-    "BuscarCi": "SELECT DISTINCT p.persona_id, p.persona_ci, p.persona_no, p.persona_ap, tp.tipo_persona_de FROM persona p JOIN tipo_persona tp ON p.tipo_persona_id = tp.tipo_persona_id LEFT JOIN curso c ON p.persona_id = c.persona_id LEFT JOIN materia m ON c.materia_id = m.materia_id LEFT JOIN seccion s ON c.seccion_id = s.seccion_id WHERE 1=1 {0} ORDER BY p.persona_ci;",
+    "BuscarCi": "SELECT DISTINCT p.persona_id, p.persona_ci, p.persona_no FROM persona p JOIN tipo_persona tp ON p.tipo_persona_id = tp.tipo_persona_id LEFT JOIN curso c ON p.persona_id = c.persona_id LEFT JOIN materia m ON c.materia_id = m.materia_id LEFT JOIN seccion s ON c.seccion_id = s.seccion_id WHERE p.persona_ci = @ci;",
     "Crear": "INSERT INTO persona (persona_no, persona_ap, persona_ci, tipo_persona_id) VALUES (@nombre, @apellido, @ci, @tipoPersona);",
     "Leer": "SELECT p.persona_id, p.persona_ci, p.persona_no, p.persona_ap, tp.tipo_persona_de FROM persona p JOIN tipo_persona tp ON p.tipo_persona_id = tp.tipo_persona_id ORDER BY p.persona_ci;",
-    "Eliminar": "DELETE FROM persona WHERE persona_no = @nombre AND persona_ap = @apellido",
+    "Eliminar": "DELETE FROM persona WHERE persona_ci = @ci",
     "Actualizar": "UPDATE persona SET persona_no = @nombre, persona_ap = @apellido, persona_ci = @ci, tipo_persona_id = @tipoPersona WHERE persona_id = @personaId;"
   },
 

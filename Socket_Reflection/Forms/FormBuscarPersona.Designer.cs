@@ -79,7 +79,7 @@
             Aceptar.FlatStyle = FlatStyle.Flat;
             Aceptar.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Aceptar.ForeColor = Color.White;
-            Aceptar.Location = new Point(135, 216);
+            Aceptar.Location = new Point(135, 212);
             Aceptar.Name = "Aceptar";
             Aceptar.Size = new Size(167, 51);
             Aceptar.TabIndex = 15;

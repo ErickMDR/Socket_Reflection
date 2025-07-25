@@ -158,7 +158,7 @@ namespace Socket_Reflection
             AccionesCliente.Controls.Add(Eliminar);
             AccionesCliente.Controls.Add(Buscar);
             AccionesCliente.Controls.Add(Ingresar);
-            AccionesCliente.Location = new Point(20, 267);
+            AccionesCliente.Location = new Point(18, 267);
             AccionesCliente.Name = "AccionesCliente";
             AccionesCliente.Size = new Size(462, 170);
             AccionesCliente.TabIndex = 4;
@@ -273,11 +273,12 @@ namespace Socket_Reflection
             // 
             // panel1
             // 
+            panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(label2);
             panel1.Controls.Add(dataGridViewTabla);
-            panel1.Location = new Point(21, 537);
+            panel1.Location = new Point(17, 537);
             panel1.Name = "panel1";
-            panel1.Size = new Size(492, 194);
+            panel1.Size = new Size(500, 198);
             panel1.TabIndex = 4;
             // 
             // label2
@@ -285,7 +286,7 @@ namespace Socket_Reflection
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 16.2782612F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.Control;
-            label2.Location = new Point(194, 7);
+            label2.Location = new Point(199, 5);
             label2.Name = "label2";
             label2.Size = new Size(95, 36);
             label2.TabIndex = 4;
@@ -335,7 +336,7 @@ namespace Socket_Reflection
             dataGridViewTabla.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewTabla.RowHeadersWidth = 49;
             dataGridViewTabla.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewTabla.Size = new Size(492, 147);
+            dataGridViewTabla.Size = new Size(498, 146);
             dataGridViewTabla.TabIndex = 4;
             // 
             // panel2
@@ -554,7 +555,7 @@ namespace Socket_Reflection
             ForeColor = Color.White;
             Name = "Menu";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Socket";
+            Text = "Socket con Reflexión";
             PanelCliente.ResumeLayout(false);
             PanelCliente.PerformLayout();
             panel3.ResumeLayout(false);

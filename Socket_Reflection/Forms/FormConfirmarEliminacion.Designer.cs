@@ -42,7 +42,7 @@
             Cancelar.FlatStyle = FlatStyle.Flat;
             Cancelar.Font = new Font("Microsoft Sans Serif", 16.2782612F, FontStyle.Bold);
             Cancelar.ForeColor = Color.White;
-            Cancelar.Location = new Point(237, 168);
+            Cancelar.Location = new Point(236, 133);
             Cancelar.Name = "Cancelar";
             Cancelar.Size = new Size(112, 60);
             Cancelar.TabIndex = 8;
@@ -55,7 +55,7 @@
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 18.1565228F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label11.ForeColor = Color.White;
-            label11.Location = new Point(43, 70);
+            label11.Location = new Point(43, 53);
             label11.Name = "label11";
             label11.Size = new Size(349, 40);
             label11.TabIndex = 7;
@@ -70,7 +70,7 @@
             Confirmar.FlatStyle = FlatStyle.Flat;
             Confirmar.Font = new Font("Microsoft Sans Serif", 16.2782612F, FontStyle.Bold);
             Confirmar.ForeColor = Color.White;
-            Confirmar.Location = new Point(64, 168);
+            Confirmar.Location = new Point(72, 133);
             Confirmar.Name = "Confirmar";
             Confirmar.Size = new Size(112, 60);
             Confirmar.TabIndex = 6;
@@ -83,7 +83,7 @@
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(13, 13, 13);
-            ClientSize = new Size(432, 305);
+            ClientSize = new Size(432, 255);
             Controls.Add(Cancelar);
             Controls.Add(label11);
             Controls.Add(Confirmar);
