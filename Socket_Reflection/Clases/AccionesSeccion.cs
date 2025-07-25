@@ -1,12 +1,13 @@
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using Socket_Reflection.Entidades;
+using Socket_Reflection.Datos;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
 
-namespace Socket_Reflection.Datos
+namespace Socket_Reflection.Clases
 {
     public class AccionesSeccion : TablaBase<AccionesSeccion>
     {

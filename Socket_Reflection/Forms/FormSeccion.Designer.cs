@@ -30,7 +30,7 @@
         {
             Titulo = new Label();
             Aceptar = new Button();
-            TxtMateria = new TextBox();
+            TxtSeccion = new TextBox();
             label = new Label();
             Sección = new Label();
             SuspendLayout();
@@ -48,35 +48,39 @@
             // Aceptar
             // 
             Aceptar.BackColor = Color.FromArgb(13, 13, 13);
+            Aceptar.Cursor = Cursors.Hand;
             Aceptar.FlatAppearance.BorderColor = Color.White;
             Aceptar.FlatAppearance.MouseOverBackColor = Color.MediumPurple;
             Aceptar.FlatStyle = FlatStyle.Flat;
-            Aceptar.Font = new Font("Segoe UI", 11.8956518F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Aceptar.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Aceptar.ForeColor = Color.White;
-            Aceptar.Location = new Point(145, 251);
+            Aceptar.Location = new Point(127, 218);
             Aceptar.Name = "Aceptar";
             Aceptar.Size = new Size(167, 51);
             Aceptar.TabIndex = 5;
             Aceptar.UseVisualStyleBackColor = false;
+            Aceptar.Click += Aceptar_Click;
             // 
-            // TxtMateria
+            // TxtSeccion
             // 
-            TxtMateria.BackColor = Color.FromArgb(13, 13, 13);
-            TxtMateria.Cursor = Cursors.IBeam;
-            TxtMateria.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtMateria.ForeColor = Color.FromArgb(70, 70, 70);
-            TxtMateria.Location = new Point(73, 169);
-            TxtMateria.Name = "TxtMateria";
-            TxtMateria.Size = new Size(318, 37);
-            TxtMateria.TabIndex = 7;
-            TxtMateria.Text = "Ingrese sección";
+            TxtSeccion.BackColor = Color.FromArgb(13, 13, 13);
+            TxtSeccion.CharacterCasing = CharacterCasing.Upper;
+            TxtSeccion.Cursor = Cursors.IBeam;
+            TxtSeccion.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtSeccion.ForeColor = Color.White;
+            TxtSeccion.Location = new Point(55, 142);
+            TxtSeccion.MaxLength = 2;
+            TxtSeccion.Name = "TxtSeccion";
+            TxtSeccion.PlaceholderText = "Ingrese sección";
+            TxtSeccion.Size = new Size(318, 37);
+            TxtSeccion.TabIndex = 7;
             // 
             // label
             // 
             label.AutoSize = true;
             label.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label.ForeColor = Color.White;
-            label.Location = new Point(82, 136);
+            label.Location = new Point(64, 109);
             label.Name = "label";
             label.Size = new Size(92, 30);
             label.TabIndex = 8;
@@ -87,24 +91,24 @@
             Sección.AutoSize = true;
             Sección.Font = new Font("Segoe UI", 18.1565228F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Sección.ForeColor = Color.White;
-            Sección.Location = new Point(170, 60);
+            Sección.Location = new Point(150, 43);
             Sección.Name = "Sección";
             Sección.Size = new Size(121, 40);
             Sección.TabIndex = 9;
             Sección.Text = "Sección";
             // 
-            // Accion
+            // FormSeccion
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(13, 13, 13);
-            ClientSize = new Size(482, 355);
+            ClientSize = new Size(432, 305);
             Controls.Add(Sección);
             Controls.Add(label);
-            Controls.Add(TxtMateria);
+            Controls.Add(TxtSeccion);
             Controls.Add(Titulo);
             Controls.Add(Aceptar);
-            Name = "Accion";
+            Name = "FormSeccion";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sección";
             ResumeLayout(false);
@@ -115,7 +119,7 @@
 
         private Label Titulo;
         private Button Aceptar;
-        private TextBox TxtMateria;
+        private TextBox TxtSeccion;
         private Label label;
         private Label Sección;
     }
