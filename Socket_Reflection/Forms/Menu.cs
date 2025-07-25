@@ -11,17 +11,12 @@ namespace Socket_Reflection
     public partial class Menu : Form
     {
         private readonly Client _cliente;
-        private readonly Server _servidor;
-        private bool _servidorIniciado = false;
         private string _tablaSeleccionada;
 
         public Menu()
         {
             InitializeComponent();
             _cliente = new Client();
-            _servidor = new Server();
-
-            _servidor.EstadoServidorCambiado += Servidor_EstadoCambiado;
 
             cmbTabla.Items.AddRange(new[] { "Persona", "Materia", "Seccion" });
             cmbTabla.SelectedIndex = 0;
@@ -47,20 +42,6 @@ namespace Socket_Reflection
         {
             TxtEstadoCliente.Text = mensaje;
             TxtEstadoCliente.Refresh();
-        }
-
-        private void ActualizarEstadoServidor(string mensaje)
-        {
-            TxtEstadoServidor.Text = mensaje;
-            TxtEstadoServidor.Refresh();
-        }
-
-        private void MostrarDetallesEjecucion(DetalleEjecucion detalle)
-        {
-            TxtClase.Text = detalle?.Clase ?? "N/A";
-            TxtMetodo.Text = detalle?.Metodo ?? "N/A";
-            TxtParams.Text = detalle != null ? string.Join(", ", detalle.ParametrosJson) : "N/A";
-            TxtTipos.Text = detalle != null ? string.Join(", ", detalle.TiposParametros) : "N/A";
         }
         #endregion
 
@@ -91,13 +72,6 @@ namespace Socket_Reflection
                 if (!_cliente.Configurado)
                 {
                     MessageBox.Show("Primero cargue la librería de configuración", "Advertencia",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (!_servidorIniciado)
-                {
-                    MessageBox.Show("El servidor no está iniciado", "Advertencia",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -266,43 +240,6 @@ namespace Socket_Reflection
                 }
             }
         }
-
-        private void IniciarServer_Click(object sender, EventArgs e)
-        {
-            try
-            {
-            _servidor.Iniciar();
-            _servidorIniciado = true;
-            ActualizarEstadoServidor("Servidor iniciado");
-            ApagarServer.Enabled = true;
-            IniciarServer.Enabled = false;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al iniciar servidor: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void ApagarServer_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                _servidor.Detener();
-                _servidorIniciado = false;
-                ActualizarEstadoServidor("Servidor detenido");
-                ApagarServer.Enabled = false;
-                IniciarServer.Enabled = true;
-
-                ActualizarEstadoCliente("Servidor desconectado");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al detener servidor: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         #endregion
 
         #region Métodos auxiliares
@@ -346,7 +283,6 @@ namespace Socket_Reflection
                     dataGridViewTabla.DataSource = dataTable;
                 }
 
-                MostrarDetallesEjecucion(resultado.DetalleEjecucion);
                 ActualizarEstadoCliente($"Búsqueda en {_tablaSeleccionada} completada");
             }
             catch (Exception ex)
@@ -385,7 +321,6 @@ namespace Socket_Reflection
             if (resultado.Exitoso)
             {
                 ActualizarEstadoCliente("Operación exitosa: " + resultado.Mensaje);
-                MostrarDetallesEjecucion(resultado.DetalleEjecucion);
             }
             else
             {
@@ -394,26 +329,8 @@ namespace Socket_Reflection
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void LimpiarCampos()
-        {
-            dataGridViewTabla.DataSource = null;
-            TxtClase.Text = "";
-            TxtMetodo.Text = "";
-            TxtParams.Text = "";
-            TxtTipos.Text = "";
-        }
-
-        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (_servidorIniciado)
-            {
-                _servidor.Detener();
-            }
-        }
+        #endregion   
     }
-        #endregion
-
     public enum ModoFormulario
     {
         Insertar,

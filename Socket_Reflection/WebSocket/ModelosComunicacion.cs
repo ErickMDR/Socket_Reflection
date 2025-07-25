@@ -16,15 +16,6 @@ namespace Socket_Reflection.WebSocket
         public bool Exitoso { get; set; }
         public string DatosJson { get; set; }
         public string Mensaje { get; set; }
-        public DetalleEjecucion DetalleEjecucion { get; set; }
-    }
-
-    public class DetalleEjecucion
-    {
-        public string Clase { get; set; }
-        public string Metodo { get; set; }
-        public string[] ParametrosJson { get; set; }
-        public string[] TiposParametros { get; set; }
     }
 
     public static class SerializadorEntidades
