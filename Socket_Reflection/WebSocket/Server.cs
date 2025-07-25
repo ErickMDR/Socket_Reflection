@@ -13,6 +13,7 @@ namespace Socket_Reflection.WebSocket
     public class Server
     {
         public event Action<bool> EstadoServidorCambiado;
+        public event Action<Resultado> ResultadoRecibido;
 
         private TcpListener _servidor;
         private bool _encendido;
@@ -71,6 +72,8 @@ namespace Socket_Reflection.WebSocket
 
                     var solicitud = JsonConvert.DeserializeObject<Solicitud>(solicitudJson);
                     var resultado = EjecutarAccion(solicitud);
+
+                    ResultadoRecibido?.Invoke(resultado);
 
                     // Enviar respuesta
                     var respuestaJson = JsonConvert.SerializeObject(resultado);

@@ -19,9 +19,20 @@ namespace Socket_Reflection
             _servidor = new Server();
 
             _servidor.EstadoServidorCambiado += Servidor_EstadoCambiado;
+            _servidor.ResultadoRecibido += Servidor_ResultadoRecibido;
         }
 
         #region Métodos auxiliares
+        private void Servidor_ResultadoRecibido(Resultado resultado)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action<Resultado>(Servidor_ResultadoRecibido), resultado);
+                return;
+            }
+
+            ProcesarResultado(resultado);  
+        }
         private void Servidor_EstadoCambiado(bool servidorActivo)
         {
             if (InvokeRequired)
@@ -29,6 +40,8 @@ namespace Socket_Reflection
                 Invoke(new Action<bool>(Servidor_EstadoCambiado), servidorActivo);
                 return;
             }
+
+            ActualizarEstadoServidor(servidorActivo ? "Servidor iniciado" : "Servidor detenido");
         }
 
         private void ActualizarEstadoServidor(string mensaje)
