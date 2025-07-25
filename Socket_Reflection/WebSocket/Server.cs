@@ -24,7 +24,6 @@ namespace Socket_Reflection.WebSocket
 
             Console.WriteLine($"Servidor iniciado en puerto {puerto}");
 
-            // Crear un hilo separado para el bucle del servidor
             _hiloServidor = new Thread(() =>
             {
                 while (_encendido)
@@ -36,7 +35,6 @@ namespace Socket_Reflection.WebSocket
                     }
                     catch (SocketException ex) when (!_encendido)
                     {
-                        // Captura específica cuando el servidor se detiene
                         Console.WriteLine("Servidor detenido correctamente");
                     }
                     catch (Exception ex)
@@ -46,7 +44,7 @@ namespace Socket_Reflection.WebSocket
                 }
             });
 
-            _hiloServidor.IsBackground = true; // Para que no mantenga la aplicación abierta
+            _hiloServidor.IsBackground = true;
             _hiloServidor.Start();
         }
 
@@ -54,7 +52,7 @@ namespace Socket_Reflection.WebSocket
         {
             _encendido = false;
             _servidor?.Stop();
-            _hiloServidor?.Join(1000); // Esperar máximo 1 segundo a que termine
+            _hiloServidor?.Join(500); 
         }
 
         private void ProcesarCliente(TcpClient cliente)

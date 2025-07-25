@@ -6,9 +6,9 @@ namespace Socket_Reflection.WebSocket
 {
     public class Solicitud
     {
-        public string Tabla { get; set; } // "Persona", "Materia", "Seccion"
-        public string Accion { get; set; } // "Insertar", "Eliminar", "BuscarPor..."
-        public string ParametrosJson { get; set; } // Serialización de los parámetros
+        public string Tabla { get; set; } 
+        public string Accion { get; set; } 
+        public string ParametrosJson { get; set; } 
     }
 
     public class Resultado

@@ -35,42 +35,37 @@ namespace Socket_Reflection.Clases
             return cmd.ExecuteNonQuery();
         }
 
-        public void Eliminar(string nombre, string apellido)
+        public void Eliminar(int ci)
         {
             var q = _config["Persona:Eliminar"];
             using var m = new ManejadorConexion(new Conexion());
             using var cmd = new NpgsqlCommand(q, m.ConexionAbierta);
-            cmd.Parameters.AddWithValue("@nombre", nombre);
-            cmd.Parameters.AddWithValue("@apellido", apellido);
+            cmd.Parameters.AddWithValue("@ci", ci);
             cmd.ExecuteNonQuery();
         }
 
-        public Persona BuscarPorCedula(int ci)
+        public List<Persona> BuscarPorCedula(int ci)
         {
+            var personas = new List<Persona>();
             var q = _config["Persona:BuscarCi"];
+
             using var m = new ManejadorConexion(new Conexion());
             using var cmd = new NpgsqlCommand(q, m.ConexionAbierta);
             cmd.Parameters.AddWithValue("@ci", ci);
 
             using var reader = cmd.ExecuteReader();
-            if (reader.Read())
+            while (reader.Read())
             {
-                return new Persona
+                personas.Add(new Persona
                 {
-                    Id = reader.GetInt32(reader.GetOrdinal("persona_id")),
-                    Nombre = reader.GetString(reader.GetOrdinal("persona_no")),
-                    Apellido = reader.GetString(reader.GetOrdinal("persona_ap")),
                     Cedula = reader.GetInt32(reader.GetOrdinal("persona_ci")),
-                    TipoPersona = ObtenerDescripcionTipoPersona(reader.GetInt32(reader.GetOrdinal("tipo_persona_id")))
-                };
+                    Nombre = reader.GetString(reader.GetOrdinal("persona_no"))
+                });
             }
-            return null;
+            return personas;
         }
 
         private int ConvertirTipoPersonaANumero(string tipo) =>
             tipo.ToLower() == "profesor" ? 1 : 2;
-
-        private string ObtenerDescripcionTipoPersona(int id) =>
-            id == 1 ? "Profesor" : "Estudiante";
     }
 }

@@ -28,72 +28,76 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label2 = new Label();
-            Si = new Button();
-            No = new Button();
+            Cancelar = new Button();
+            label11 = new Label();
+            Confirmar = new Button();
             SuspendLayout();
             // 
-            // label2
+            // Cancelar
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 18.1565228F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(85, 59);
-            label2.Name = "label2";
-            label2.Size = new Size(316, 40);
-            label2.TabIndex = 12;
-            label2.Text = "Confirmar operación?";
+            Cancelar.BackColor = Color.FromArgb(13, 13, 13);
+            Cancelar.Cursor = Cursors.Hand;
+            Cancelar.FlatAppearance.BorderColor = Color.White;
+            Cancelar.FlatAppearance.MouseOverBackColor = Color.MediumPurple;
+            Cancelar.FlatStyle = FlatStyle.Flat;
+            Cancelar.Font = new Font("Microsoft Sans Serif", 16.2782612F, FontStyle.Bold);
+            Cancelar.ForeColor = Color.White;
+            Cancelar.Location = new Point(237, 168);
+            Cancelar.Name = "Cancelar";
+            Cancelar.Size = new Size(112, 60);
+            Cancelar.TabIndex = 8;
+            Cancelar.Text = "No";
+            Cancelar.UseVisualStyleBackColor = false;
+            Cancelar.Click += Cancelar_Click;
             // 
-            // Si
+            // label11
             // 
-            Si.BackColor = Color.FromArgb(13, 13, 13);
-            Si.FlatAppearance.BorderColor = Color.White;
-            Si.FlatAppearance.MouseOverBackColor = Color.MediumPurple;
-            Si.FlatStyle = FlatStyle.Flat;
-            Si.Font = new Font("Segoe UI", 16.2782612F, FontStyle.Bold);
-            Si.ForeColor = Color.White;
-            Si.Location = new Point(85, 161);
-            Si.Name = "Si";
-            Si.Size = new Size(122, 71);
-            Si.TabIndex = 11;
-            Si.Text = "Si";
-            Si.UseVisualStyleBackColor = false;
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 18.1565228F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.ForeColor = Color.White;
+            label11.Location = new Point(43, 70);
+            label11.Name = "label11";
+            label11.Size = new Size(349, 40);
+            label11.TabIndex = 7;
+            label11.Text = "¿Confirma la operación?";
             // 
-            // No
+            // Confirmar
             // 
-            No.BackColor = Color.FromArgb(13, 13, 13);
-            No.FlatAppearance.BorderColor = Color.White;
-            No.FlatAppearance.MouseOverBackColor = Color.MediumPurple;
-            No.FlatStyle = FlatStyle.Flat;
-            No.Font = new Font("Segoe UI", 16.2782612F, FontStyle.Bold);
-            No.ForeColor = Color.White;
-            No.Location = new Point(265, 161);
-            No.Name = "No";
-            No.Size = new Size(122, 71);
-            No.TabIndex = 13;
-            No.Text = "No";
-            No.UseVisualStyleBackColor = false;
+            Confirmar.BackColor = Color.FromArgb(13, 13, 13);
+            Confirmar.Cursor = Cursors.Hand;
+            Confirmar.FlatAppearance.BorderColor = Color.White;
+            Confirmar.FlatAppearance.MouseOverBackColor = Color.MediumPurple;
+            Confirmar.FlatStyle = FlatStyle.Flat;
+            Confirmar.Font = new Font("Microsoft Sans Serif", 16.2782612F, FontStyle.Bold);
+            Confirmar.ForeColor = Color.White;
+            Confirmar.Location = new Point(64, 168);
+            Confirmar.Name = "Confirmar";
+            Confirmar.Size = new Size(112, 60);
+            Confirmar.TabIndex = 6;
+            Confirmar.Text = "Si";
+            Confirmar.UseVisualStyleBackColor = false;
+            Confirmar.Click += Confirmar_Click;
             // 
             // FormConfirmarEliminacion
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(13, 13, 13);
-            ClientSize = new Size(482, 305);
-            Controls.Add(No);
-            Controls.Add(label2);
-            Controls.Add(Si);
+            ClientSize = new Size(432, 305);
+            Controls.Add(Cancelar);
+            Controls.Add(label11);
+            Controls.Add(Confirmar);
             Name = "FormConfirmarEliminacion";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Confirmar Eliminación";
+            Text = "Confirmar Eliminacion";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label label2;
-        private Button Si;
-        private Button No;
+        private Button Cancelar;
+        private Label label11;
+        private Button Confirmar;
     }
 }

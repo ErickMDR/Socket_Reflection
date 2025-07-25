@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
-            CargarLibreria = new Button();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Title = new Label();
             PanelCliente = new Panel();
             panel3 = new Panel();
@@ -44,6 +43,8 @@
             Eliminar = new Button();
             Buscar = new Button();
             Ingresar = new Button();
+            label11 = new Label();
+            button1 = new Button();
             label1 = new Label();
             panel1 = new Panel();
             label2 = new Label();
@@ -54,7 +55,7 @@
             label7 = new Label();
             TxtParams = new TextBox();
             label6 = new Label();
-            TextMetodo = new TextBox();
+            TxtMetodo = new TextBox();
             label5 = new Label();
             label3 = new Label();
             ApagarServer = new Button();
@@ -73,27 +74,11 @@
             panel4.SuspendLayout();
             SuspendLayout();
             // 
-            // CargarLibreria
-            // 
-            CargarLibreria.BackColor = Color.FromArgb(13, 13, 13);
-            CargarLibreria.Cursor = Cursors.Hand;
-            CargarLibreria.FlatAppearance.BorderColor = Color.White;
-            CargarLibreria.FlatAppearance.MouseOverBackColor = Color.MediumPurple;
-            CargarLibreria.FlatStyle = FlatStyle.Flat;
-            CargarLibreria.Font = new Font("Microsoft Sans Serif", 13.1478262F);
-            CargarLibreria.Location = new Point(20, 86);
-            CargarLibreria.Name = "CargarLibreria";
-            CargarLibreria.Size = new Size(197, 51);
-            CargarLibreria.TabIndex = 0;
-            CargarLibreria.Text = "Cargar Librería";
-            CargarLibreria.UseVisualStyleBackColor = false;
-            CargarLibreria.Click += CargarLibreria_Click;
-            // 
             // Title
             // 
             Title.AutoSize = true;
             Title.Font = new Font("Segoe UI", 20.0347824F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Title.Location = new Point(338, 20);
+            Title.Location = new Point(384, 21);
             Title.Name = "Title";
             Title.Size = new Size(333, 45);
             Title.TabIndex = 1;
@@ -105,11 +90,12 @@
             PanelCliente.Controls.Add(panel3);
             PanelCliente.Controls.Add(CrearSocketCli);
             PanelCliente.Controls.Add(AccionesCliente);
+            PanelCliente.Controls.Add(label11);
+            PanelCliente.Controls.Add(button1);
             PanelCliente.Controls.Add(label1);
-            PanelCliente.Controls.Add(CargarLibreria);
             PanelCliente.Location = new Point(17, 85);
             PanelCliente.Name = "PanelCliente";
-            PanelCliente.Size = new Size(460, 650);
+            PanelCliente.Size = new Size(500, 650);
             PanelCliente.TabIndex = 3;
             // 
             // panel3
@@ -119,7 +105,7 @@
             panel3.Controls.Add(TxtEstadoCliente);
             panel3.Location = new Point(-1, 156);
             panel3.Name = "panel3";
-            panel3.Size = new Size(460, 97);
+            panel3.Size = new Size(500, 97);
             panel3.TabIndex = 11;
             // 
             // label10
@@ -127,7 +113,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label10.ForeColor = Color.White;
-            label10.Location = new Point(36, 35);
+            label10.Location = new Point(25, 35);
             label10.Name = "label10";
             label10.Size = new Size(82, 30);
             label10.TabIndex = 10;
@@ -139,11 +125,11 @@
             TxtEstadoCliente.Enabled = false;
             TxtEstadoCliente.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtEstadoCliente.ForeColor = Color.White;
-            TxtEstadoCliente.Location = new Point(134, 32);
+            TxtEstadoCliente.Location = new Point(123, 32);
             TxtEstadoCliente.MaxLength = 40;
             TxtEstadoCliente.Name = "TxtEstadoCliente";
             TxtEstadoCliente.ReadOnly = true;
-            TxtEstadoCliente.Size = new Size(264, 37);
+            TxtEstadoCliente.Size = new Size(347, 37);
             TxtEstadoCliente.TabIndex = 9;
             // 
             // CrearSocketCli
@@ -154,11 +140,11 @@
             CrearSocketCli.FlatAppearance.MouseOverBackColor = Color.MediumPurple;
             CrearSocketCli.FlatStyle = FlatStyle.Flat;
             CrearSocketCli.Font = new Font("Microsoft Sans Serif", 13.1478262F);
-            CrearSocketCli.Location = new Point(236, 86);
+            CrearSocketCli.Location = new Point(286, 86);
             CrearSocketCli.Name = "CrearSocketCli";
-            CrearSocketCli.Size = new Size(197, 51);
+            CrearSocketCli.Size = new Size(153, 51);
             CrearSocketCli.TabIndex = 5;
-            CrearSocketCli.Text = "Crear Socket Cli";
+            CrearSocketCli.Text = "Conectar";
             CrearSocketCli.UseVisualStyleBackColor = false;
             CrearSocketCli.Click += CrearSocketCli_Click;
             // 
@@ -172,7 +158,7 @@
             AccionesCliente.Controls.Add(Ingresar);
             AccionesCliente.Location = new Point(20, 267);
             AccionesCliente.Name = "AccionesCliente";
-            AccionesCliente.Size = new Size(413, 170);
+            AccionesCliente.Size = new Size(462, 170);
             AccionesCliente.TabIndex = 4;
             // 
             // label9
@@ -196,7 +182,7 @@
             cmbTabla.FormattingEnabled = true;
             cmbTabla.Location = new Point(143, 27);
             cmbTabla.Name = "cmbTabla";
-            cmbTabla.Size = new Size(197, 38);
+            cmbTabla.Size = new Size(231, 38);
             cmbTabla.TabIndex = 6;
             // 
             // Eliminar
@@ -207,7 +193,7 @@
             Eliminar.FlatAppearance.MouseOverBackColor = Color.MediumPurple;
             Eliminar.FlatStyle = FlatStyle.Flat;
             Eliminar.Font = new Font("Microsoft Sans Serif", 13.1478262F);
-            Eliminar.Location = new Point(283, 101);
+            Eliminar.Location = new Point(321, 101);
             Eliminar.Name = "Eliminar";
             Eliminar.Size = new Size(110, 50);
             Eliminar.TabIndex = 7;
@@ -223,7 +209,7 @@
             Buscar.FlatAppearance.MouseOverBackColor = Color.MediumPurple;
             Buscar.FlatStyle = FlatStyle.Flat;
             Buscar.Font = new Font("Microsoft Sans Serif", 13.1478262F);
-            Buscar.Location = new Point(21, 101);
+            Buscar.Location = new Point(31, 101);
             Buscar.Name = "Buscar";
             Buscar.Size = new Size(110, 50);
             Buscar.TabIndex = 6;
@@ -239,7 +225,7 @@
             Ingresar.FlatAppearance.MouseOverBackColor = Color.MediumPurple;
             Ingresar.FlatStyle = FlatStyle.Flat;
             Ingresar.Font = new Font("Microsoft Sans Serif", 13.1478262F);
-            Ingresar.Location = new Point(153, 101);
+            Ingresar.Location = new Point(175, 101);
             Ingresar.Name = "Ingresar";
             Ingresar.Size = new Size(110, 50);
             Ingresar.TabIndex = 5;
@@ -247,11 +233,37 @@
             Ingresar.UseVisualStyleBackColor = false;
             Ingresar.Click += Ingresar_Click;
             // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 18.1565228F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.Location = new Point(194, 22);
+            label11.Name = "label11";
+            label11.Size = new Size(112, 40);
+            label11.TabIndex = 4;
+            label11.Text = "Cliente";
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(13, 13, 13);
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderColor = Color.White;
+            button1.FlatAppearance.MouseOverBackColor = Color.MediumPurple;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Microsoft Sans Serif", 13.1478262F);
+            button1.Location = new Point(52, 86);
+            button1.Name = "button1";
+            button1.Size = new Size(170, 51);
+            button1.TabIndex = 0;
+            button1.Text = "Cargar Librería";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += CargarLibreria_Click;
+            // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18.1565228F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(172, 22);
+            label1.Location = new Point(194, 22);
             label1.Name = "label1";
             label1.Size = new Size(112, 40);
             label1.TabIndex = 4;
@@ -263,7 +275,7 @@
             panel1.Controls.Add(dataGridViewTabla);
             panel1.Location = new Point(21, 537);
             panel1.Name = "panel1";
-            panel1.Size = new Size(452, 194);
+            panel1.Size = new Size(492, 194);
             panel1.TabIndex = 4;
             // 
             // label2
@@ -271,7 +283,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 16.2782612F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.Control;
-            label2.Location = new Point(179, 6);
+            label2.Location = new Point(194, 7);
             label2.Name = "label2";
             label2.Size = new Size(95, 36);
             label2.TabIndex = 4;
@@ -286,42 +298,42 @@
             dataGridViewTabla.BackgroundColor = Color.FromArgb(13, 13, 13);
             dataGridViewTabla.BorderStyle = BorderStyle.None;
             dataGridViewTabla.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = Color.FromArgb(22, 18, 30);
-            dataGridViewCellStyle16.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            dataGridViewCellStyle16.ForeColor = Color.White;
-            dataGridViewCellStyle16.Padding = new Padding(30, 5, 5, 5);
-            dataGridViewCellStyle16.SelectionBackColor = Color.FromArgb(22, 18, 30);
-            dataGridViewCellStyle16.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = DataGridViewTriState.True;
-            dataGridViewTabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(22, 18, 30);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.Padding = new Padding(30, 5, 5, 5);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(22, 18, 30);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewTabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewTabla.ColumnHeadersHeight = 50;
-            dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = Color.FromArgb(22, 18, 30);
-            dataGridViewCellStyle17.Font = new Font("Segoe UI", 14F);
-            dataGridViewCellStyle17.ForeColor = Color.White;
-            dataGridViewCellStyle17.Padding = new Padding(5);
-            dataGridViewCellStyle17.SelectionBackColor = Color.MediumPurple;
-            dataGridViewCellStyle17.SelectionForeColor = Color.White;
-            dataGridViewCellStyle17.WrapMode = DataGridViewTriState.False;
-            dataGridViewTabla.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(22, 18, 30);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.8956518F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.Padding = new Padding(5);
+            dataGridViewCellStyle2.SelectionBackColor = Color.MediumPurple;
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridViewTabla.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewTabla.EnableHeadersVisualStyles = false;
             dataGridViewTabla.GridColor = Color.LightGray;
             dataGridViewTabla.Location = new Point(0, 50);
             dataGridViewTabla.Margin = new Padding(0);
             dataGridViewTabla.Name = "dataGridViewTabla";
             dataGridViewTabla.ReadOnly = true;
-            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = Color.FromArgb(22, 18, 30);
-            dataGridViewCellStyle18.Font = new Font("Segoe UI", 8.765218F);
-            dataGridViewCellStyle18.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = Color.FromArgb(22, 18, 30);
-            dataGridViewCellStyle18.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = DataGridViewTriState.True;
-            dataGridViewTabla.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(22, 18, 30);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 8.765218F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(22, 18, 30);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewTabla.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewTabla.RowHeadersWidth = 49;
             dataGridViewTabla.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewTabla.Size = new Size(452, 147);
+            dataGridViewTabla.Size = new Size(492, 147);
             dataGridViewTabla.TabIndex = 4;
             // 
             // panel2
@@ -332,7 +344,7 @@
             panel2.Controls.Add(label7);
             panel2.Controls.Add(TxtParams);
             panel2.Controls.Add(label6);
-            panel2.Controls.Add(TextMetodo);
+            panel2.Controls.Add(TxtMetodo);
             panel2.Controls.Add(label5);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(ApagarServer);
@@ -340,9 +352,9 @@
             panel2.Controls.Add(panel4);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(IniciarServer);
-            panel2.Location = new Point(503, 85);
+            panel2.Location = new Point(560, 85);
             panel2.Name = "panel2";
-            panel2.Size = new Size(460, 650);
+            panel2.Size = new Size(500, 650);
             panel2.TabIndex = 5;
             // 
             // label8
@@ -350,7 +362,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(39, 561);
+            label8.Location = new Point(27, 561);
             label8.Name = "label8";
             label8.Size = new Size(70, 30);
             label8.TabIndex = 19;
@@ -362,11 +374,11 @@
             TxtTipos.Enabled = false;
             TxtTipos.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtTipos.ForeColor = Color.White;
-            TxtTipos.Location = new Point(137, 558);
+            TxtTipos.Location = new Point(125, 558);
             TxtTipos.MaxLength = 40;
             TxtTipos.Name = "TxtTipos";
             TxtTipos.ReadOnly = true;
-            TxtTipos.Size = new Size(261, 37);
+            TxtTipos.Size = new Size(345, 37);
             TxtTipos.TabIndex = 18;
             // 
             // label7
@@ -374,7 +386,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(39, 498);
+            label7.Location = new Point(27, 498);
             label7.Name = "label7";
             label7.Size = new Size(87, 30);
             label7.TabIndex = 17;
@@ -386,11 +398,11 @@
             TxtParams.Enabled = false;
             TxtParams.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtParams.ForeColor = Color.White;
-            TxtParams.Location = new Point(137, 495);
+            TxtParams.Location = new Point(125, 495);
             TxtParams.MaxLength = 40;
             TxtParams.Name = "TxtParams";
             TxtParams.ReadOnly = true;
-            TxtParams.Size = new Size(261, 37);
+            TxtParams.Size = new Size(345, 37);
             TxtParams.TabIndex = 16;
             // 
             // label6
@@ -398,30 +410,30 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(39, 429);
+            label6.Location = new Point(27, 429);
             label6.Name = "label6";
             label6.Size = new Size(96, 30);
             label6.TabIndex = 15;
             label6.Text = "Método:";
             // 
-            // TextMetodo
+            // TxtMetodo
             // 
-            TextMetodo.BackColor = Color.FromArgb(13, 13, 13);
-            TextMetodo.Enabled = false;
-            TextMetodo.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TextMetodo.ForeColor = Color.White;
-            TextMetodo.Location = new Point(137, 426);
-            TextMetodo.MaxLength = 40;
-            TextMetodo.Name = "TextMetodo";
-            TextMetodo.ReadOnly = true;
-            TextMetodo.Size = new Size(261, 37);
-            TextMetodo.TabIndex = 14;
+            TxtMetodo.BackColor = Color.FromArgb(13, 13, 13);
+            TxtMetodo.Enabled = false;
+            TxtMetodo.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtMetodo.ForeColor = Color.White;
+            TxtMetodo.Location = new Point(125, 426);
+            TxtMetodo.MaxLength = 40;
+            TxtMetodo.Name = "TxtMetodo";
+            TxtMetodo.ReadOnly = true;
+            TxtMetodo.Size = new Size(345, 37);
+            TxtMetodo.TabIndex = 14;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 18.1565228F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(92, 286);
+            label5.Location = new Point(136, 280);
             label5.Name = "label5";
             label5.Size = new Size(250, 40);
             label5.TabIndex = 13;
@@ -432,7 +444,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(39, 364);
+            label3.Location = new Point(27, 364);
             label3.Name = "label3";
             label3.Size = new Size(69, 30);
             label3.TabIndex = 12;
@@ -446,11 +458,11 @@
             ApagarServer.FlatAppearance.MouseOverBackColor = Color.MediumPurple;
             ApagarServer.FlatStyle = FlatStyle.Flat;
             ApagarServer.Font = new Font("Microsoft Sans Serif", 13.1478262F);
-            ApagarServer.Location = new Point(243, 86);
+            ApagarServer.Location = new Point(285, 86);
             ApagarServer.Name = "ApagarServer";
-            ApagarServer.Size = new Size(197, 51);
+            ApagarServer.Size = new Size(153, 51);
             ApagarServer.TabIndex = 5;
-            ApagarServer.Text = "Apagar Servidor";
+            ApagarServer.Text = "Apagar";
             ApagarServer.UseVisualStyleBackColor = false;
             ApagarServer.Click += ApagarServer_Click;
             // 
@@ -460,11 +472,11 @@
             TxtClase.Enabled = false;
             TxtClase.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtClase.ForeColor = Color.White;
-            TxtClase.Location = new Point(137, 361);
+            TxtClase.Location = new Point(125, 361);
             TxtClase.MaxLength = 40;
             TxtClase.Name = "TxtClase";
             TxtClase.ReadOnly = true;
-            TxtClase.Size = new Size(261, 37);
+            TxtClase.Size = new Size(345, 37);
             TxtClase.TabIndex = 11;
             // 
             // panel4
@@ -474,7 +486,7 @@
             panel4.Controls.Add(TxtEstadoServidor);
             panel4.Location = new Point(-1, 156);
             panel4.Name = "panel4";
-            panel4.Size = new Size(460, 97);
+            panel4.Size = new Size(500, 97);
             panel4.TabIndex = 4;
             // 
             // label
@@ -482,7 +494,7 @@
             label.AutoSize = true;
             label.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label.ForeColor = Color.White;
-            label.Location = new Point(36, 35);
+            label.Location = new Point(29, 35);
             label.Name = "label";
             label.Size = new Size(82, 30);
             label.TabIndex = 10;
@@ -494,18 +506,18 @@
             TxtEstadoServidor.Enabled = false;
             TxtEstadoServidor.Font = new Font("Segoe UI", 13.7739134F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtEstadoServidor.ForeColor = Color.White;
-            TxtEstadoServidor.Location = new Point(134, 32);
+            TxtEstadoServidor.Location = new Point(127, 32);
             TxtEstadoServidor.MaxLength = 40;
             TxtEstadoServidor.Name = "TxtEstadoServidor";
             TxtEstadoServidor.ReadOnly = true;
-            TxtEstadoServidor.Size = new Size(264, 37);
+            TxtEstadoServidor.Size = new Size(343, 37);
             TxtEstadoServidor.TabIndex = 9;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 18.1565228F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(163, 22);
+            label4.Location = new Point(181, 22);
             label4.Name = "label4";
             label4.Size = new Size(134, 40);
             label4.TabIndex = 4;
@@ -519,11 +531,11 @@
             IniciarServer.FlatAppearance.MouseOverBackColor = Color.MediumPurple;
             IniciarServer.FlatStyle = FlatStyle.Flat;
             IniciarServer.Font = new Font("Microsoft Sans Serif", 13.1478262F);
-            IniciarServer.Location = new Point(20, 86);
+            IniciarServer.Location = new Point(63, 86);
             IniciarServer.Name = "IniciarServer";
-            IniciarServer.Size = new Size(197, 51);
+            IniciarServer.Size = new Size(153, 51);
             IniciarServer.TabIndex = 0;
-            IniciarServer.Text = "Iniciar Servidor";
+            IniciarServer.Text = "Iniciar";
             IniciarServer.UseVisualStyleBackColor = false;
             IniciarServer.Click += IniciarServer_Click;
             // 
@@ -532,7 +544,7 @@
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(13, 13, 13);
-            ClientSize = new Size(982, 755);
+            ClientSize = new Size(1082, 755);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(PanelCliente);
@@ -559,8 +571,6 @@
         }
 
         #endregion
-
-        private Button CargarLibreria;
         private Label Title;
         private Panel PanelCliente;
         private Label label1;
@@ -586,7 +596,7 @@
         private Label label7;
         private TextBox TxtParams;
         private Label label6;
-        private TextBox TextMetodo;
+        private TextBox TxtMetodo;
         private Label label8;
         private TextBox TxtTipos;
         private ComboBox cmbTabla;
@@ -594,5 +604,7 @@
         private Panel panel3;
         private Label label10;
         private TextBox TxtEstadoCliente;
+        private Label label11;
+        private Button button1;
     }
 }
