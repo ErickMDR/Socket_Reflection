@@ -21,12 +21,28 @@ namespace Socket_Reflection
             _cliente = new Client();
             _servidor = new Server();
 
+            _servidor.EstadoServidorCambiado += Servidor_EstadoCambiado;
+
             cmbTabla.Items.AddRange(new[] { "Persona", "Materia", "Seccion" });
             cmbTabla.SelectedIndex = 0;
             _tablaSeleccionada = cmbTabla.SelectedItem.ToString();
         }
 
         #region Métodos auxiliares
+        private void Servidor_EstadoCambiado(bool servidorActivo)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action<bool>(Servidor_EstadoCambiado), servidorActivo);
+                return;
+            }
+
+            if (!servidorActivo)
+            {
+                ActualizarEstadoCliente("Servidor desconectado");
+            }
+        }
+
         private void ActualizarEstadoCliente(string mensaje)
         {
             TxtEstadoCliente.Text = mensaje;
@@ -79,11 +95,18 @@ namespace Socket_Reflection
                     return;
                 }
 
+                if (!_servidorIniciado)
+                {
+                    MessageBox.Show("El servidor no está iniciado", "Advertencia",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 var resultado = _cliente.EnviarSolicitud("Materia", "Listado");
 
                 if (resultado.Exitoso)
                 {
-                    ActualizarEstadoCliente($"Conexión realizada correctamente");
+                    ActualizarEstadoCliente($"Conectado a {_cliente.Host}:{_cliente.Port}");
                 }
                 else
                 {
@@ -92,7 +115,7 @@ namespace Socket_Reflection
             }
             catch (Exception ex)
             {
-                ActualizarEstadoCliente("Error al conectar con el servidor");
+                ActualizarEstadoCliente("Error de conexión");
                 MessageBox.Show($"Error al conectar con el servidor: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -264,11 +287,21 @@ namespace Socket_Reflection
 
         private void ApagarServer_Click(object sender, EventArgs e)
         {
-            _servidor.Detener();
-            _servidorIniciado = false;
-            ActualizarEstadoServidor("Servidor detenido");
-            ApagarServer.Enabled = false;
-            IniciarServer.Enabled = true;
+            try
+            {
+                _servidor.Detener();
+                _servidorIniciado = false;
+                ActualizarEstadoServidor("Servidor detenido");
+                ApagarServer.Enabled = false;
+                IniciarServer.Enabled = true;
+
+                ActualizarEstadoCliente("Servidor desconectado");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al detener servidor: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         #endregion
 
@@ -356,6 +389,7 @@ namespace Socket_Reflection
             }
             else
             {
+                ActualizarEstadoCliente("Operación fallida");
                 MessageBox.Show("Error: " + resultado.Mensaje, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

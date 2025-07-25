@@ -12,6 +12,8 @@ namespace Socket_Reflection.WebSocket
 {
     public class Server
     {
+        public event Action<bool> EstadoServidorCambiado;
+
         private TcpListener _servidor;
         private bool _encendido;
         private Thread _hiloServidor;
@@ -21,8 +23,7 @@ namespace Socket_Reflection.WebSocket
             _servidor = new TcpListener(IPAddress.Any, puerto);
             _servidor.Start();
             _encendido = true;
-
-            Console.WriteLine($"Servidor iniciado en puerto {puerto}");
+            EstadoServidorCambiado?.Invoke(true);
 
             _hiloServidor = new Thread(() =>
             {
@@ -52,7 +53,9 @@ namespace Socket_Reflection.WebSocket
         {
             _encendido = false;
             _servidor?.Stop();
-            _hiloServidor?.Join(500); 
+            _hiloServidor?.Join(500);
+
+            EstadoServidorCambiado?.Invoke(false);
         }
 
         private void ProcesarCliente(TcpClient cliente)
