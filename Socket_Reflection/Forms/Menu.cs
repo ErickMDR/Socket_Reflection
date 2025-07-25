@@ -53,16 +53,12 @@ namespace Socket_Reflection
         {
             try
             {
-                var openFileDialog = new OpenFileDialog
-                {
-                    Filter = "Archivos JSON (*.json)|*.json",
-                    Title = "Seleccionar archivo de configuración"
-                };
+                var rutaLib = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "libCli.json");
 
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    ActualizarEstadoCliente("Librería cargada");
-                }
+                _cliente.ConfigurarDesdeJson(rutaLib);
+                ActualizarEstadoCliente($"Librería cargada");
+
+                var config = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText(rutaLib));
             }
             catch (Exception ex)
             {
@@ -76,11 +72,18 @@ namespace Socket_Reflection
         {
             try
             {
+                if (!_cliente.Configurado)
+                {
+                    MessageBox.Show("Primero cargue la librería de configuración", "Advertencia",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 var resultado = _cliente.EnviarSolicitud("Materia", "Listado");
 
                 if (resultado.Exitoso)
                 {
-                    ActualizarEstadoCliente("Creado y conectado al servidor");
+                    ActualizarEstadoCliente($"Conexión realizada correctamente");
                 }
                 else
                 {
@@ -245,20 +248,12 @@ namespace Socket_Reflection
         {
             try
             {
-                if (!_servidorIniciado)
-                {
-                    _servidor.Iniciar();
-                    _servidorIniciado = true;
-                    ActualizarEstadoServidor("Servidor iniciado en puerto 1024");
-                    IniciarServer.Text = "Reiniciar Servidor";
-                    ApagarServer.Enabled = true;
-                }
-                else
-                {
-                    _servidor.Detener();
-                    _servidor.Iniciar();
-                    ActualizarEstadoServidor("Servidor reiniciado en puerto 1024");
-                }
+            _servidor.Iniciar();
+            _servidorIniciado = true;
+            ActualizarEstadoServidor("Servidor iniciado");
+            ApagarServer.Enabled = true;
+            IniciarServer.Enabled = false;
+
             }
             catch (Exception ex)
             {
@@ -272,8 +267,8 @@ namespace Socket_Reflection
             _servidor.Detener();
             _servidorIniciado = false;
             ActualizarEstadoServidor("Servidor detenido");
-            IniciarServer.Text = "Iniciar Servidor";
             ApagarServer.Enabled = false;
+            IniciarServer.Enabled = true;
         }
         #endregion
 
